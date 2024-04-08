@@ -589,4 +589,10 @@ body {
   .cart {
     padding: 30px;
   }
+
+   /*Footer*/
+  
+  footer.section-p1 {
+    padding: 40px 20px;
+  }
 }
