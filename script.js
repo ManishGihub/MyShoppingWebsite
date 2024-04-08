@@ -3,8 +3,8 @@
 var mainImg = document.getElementById("mainImg");
 var smallImg = document.getElementsByClassName("small-img");
 
-for (var i = 0; i < smallImg.length; i++) {
-  smallImg[i].onclick = function (event) {
+for (var imageIndex = 0; imageIndex < smallImg.length; imageIndex++) {
+  smallImg[imageIndex].onclick = function (event) {
     mainImg.src = event.target.src;
   };
 }
@@ -17,22 +17,30 @@ const search = () => {
   const searchBox = document.getElementById("search-item").value.toUpperCase();
   const storeItems = document.getElementById("product-list");
   const product = storeItems.querySelectorAll(".pro");
-  const pname = storeItems.querySelectorAll("h5");
+  const productName = storeItems.querySelectorAll("h5");
+  let textvalue;
+  let match;
 
-  for (var i = 0; i < pname.length; i++) {
-    let match = pname[i];
+  for (
+    var productIndex = 0;
+    productIndex < productName.length;
+    productIndex++
+  ) {
+    match = productName[productIndex];
 
     if (match) {
-      let textvalue = match.textContent || match.innerHTML;
+      textvalue = match.textContent || match.innerHTML;
 
       if (textvalue.toUpperCase().indexOf(searchBox) > -1) {
-        product[i].style.display = "";
+        product[productIndex].style.display = "";
       } else {
-        product[i].style.display = "none";
+        product[productIndex].style.display = "none";
       }
     }
   }
 };
+
+//cart page
 
 // Initialize the cart element
 let cart = document.querySelector(".cart");
@@ -60,22 +68,22 @@ function ready() {
 
   // Add event listeners for remove buttons
   var removeCartButtons = document.getElementsByClassName("cart-remove");
-  for (i = 0; i < removeCartButtons.length; i++) {
-    var button = removeCartButtons[i];
+  for (buttonIndex = 0; buttonIndex < removeCartButtons.length; buttonIndex++) {
+    var button = removeCartButtons[buttonIndex];
     button.addEventListener("click", removeCartItem);
   }
 
   // Add event listeners for quantity changes
   var quantityInputs = document.getElementsByClassName("cart-quantity");
-  for (i = 0; i < quantityInputs.length; i++) {
-    var input = quantityInputs[i];
+  for (inputIndex = 0; inputIndex < quantityInputs.length; inputIndex++) {
+    var input = quantityInputs[inputIndex];
     input.addEventListener("change", quantityChanged);
   }
 
   // Add event listeners for add to cart buttons
   var addCart = document.getElementsByClassName("cart-icon");
-  for (i = 0; i < addCart.length; i++) {
-    var button = addCart[i];
+  for (buttonIndex = 0; buttonIndex < addCart.length; buttonIndex++) {
+    var button = addCart[buttonIndex];
     button.addEventListener("click", addCartClicked);
   }
 
@@ -87,12 +95,42 @@ function ready() {
 
 // Function to handle buy button click
 function buyButtonClicked() {
-  // Show alert message
-  alert("Your Order is Placed");
+  // Create a new toast element
+  var toast = document.createElement("div");
+  toast.classList.add("toast");
+  toast.classList.add("align-items-center");
+  toast.classList.add("text-bg-primary");
+  toast.classList.add("border-0");
+  toast.setAttribute("role", "alert");
+  toast.setAttribute("aria-live", "assertive");
+  toast.setAttribute("aria-atomic", "true");
+
+  // Construct the toast content
+  toast.innerHTML = `
+    <div class="d-flex">
+      <div class="toast-body">
+        Your order has been placed successfully!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  `;
+
+  // Append the toast to the toast container
+  var toastContainer = document.getElementById("toastContainer");
+  toastContainer.appendChild(toast);
+
+  // Initialize Bootstrap toast object
+  var bsToast = new bootstrap.Toast(toast);
+
+  // Show the toast
+  bsToast.show();
+
   // Clear cart items
   cartItems = [];
+
   // Update cart display
   updateCartDisplay();
+
   // Remove cart items from local storage
   localStorage.removeItem("cartItems");
 }
@@ -203,8 +241,8 @@ function updateCartDisplay() {
 
   // Add event listeners to quantity inputs
   var quantityInputs = document.getElementsByClassName("cart-quantity");
-  for (var i = 0; i < quantityInputs.length; i++) {
-    quantityInputs[i].addEventListener("change", quantityChanged);
+  for (var inputIndex = 0; inputIndex < quantityInputs.length; inputIndex++) {
+    quantityInputs[inputIndex].addEventListener("change", quantityChanged);
   }
 
   // Add event listeners to remove buttons
