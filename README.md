@@ -5,14 +5,15 @@ This responsive shopping website has features like search products and add-to-ca
 
 # Features:
 
-1 This is a responsive shopping website.
-2 The website has multiple pages like the Home page, About page, Blog page, Contact page, and Cart page.
-3 Users can navigate through the website using the navigation bar.
-4 There are multiple products listed on the websites.
-5 Users can search the products with the product name and relevant products are shown by the website.
-6 Users can add favorite products to the carts using the cart icon.
-7 Users can update the cart quantities and delete the products from the cart table.
-8 Users can view and buy the cart products using the Buy Now button present on the cart page.
+1 This is a responsive shopping website.<br><br>
+2 The website has multiple pages like the Home page, About page, Blog page, Contact page, and Cart page.<br><br>
+3 Users can navigate through the website using the navigation bar.<br><br>
+4 There are multiple products listed on the websites.<br><br>
+5 Users can search the products with the product name on the shop page and relevant products are shown on the website.<br><br>
+6 Users can add favorite products to the carts using the cart icon.<br><br>
+7 Users can update the cart quantities and delete the products from the cart table.<br><br>
+8 The total amount of purchased products changes dynamically.<br><br>
+9 Users can view and buy the cart products using the Buy Now button present on the cart page.<br><br>
 
 ![1](https://github.com/ManishGihub/MyShoppingWebsite/assets/102681545/004b1336-5898-4a21-8850-de9d621189b9)
 
